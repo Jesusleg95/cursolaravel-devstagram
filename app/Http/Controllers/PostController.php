@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -58,6 +60,22 @@ class PostController extends Controller
             'post' => $post,
             'user' => $user
         ]);
+    }
+
+    public function destroy(Post $post){
+        Gate::authorize('delete',$post);
+        $post->delete();
+
+        //Eliminar la imagen
+        $imagen_path = public_path('uploads/' .$post->imagen);
+
+        if(File::exists($imagen_path)){
+            File::delete($imagen_path);
+        }
+
+        return redirect()->route('posts.index', Auth::user()->username);
+
+
     }
 
 
