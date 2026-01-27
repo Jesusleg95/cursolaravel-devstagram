@@ -33,7 +33,7 @@
                         >
                             Hola: 
                             <span class="font-normal">
-                                {{ Auth::user()->name }}
+                                {{ Auth::user()->username }}
                             </span>
                         </a>
 
