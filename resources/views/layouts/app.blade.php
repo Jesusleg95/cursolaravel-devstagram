@@ -11,9 +11,9 @@
     <body class="bg-gray-100">
         <header class="p-5 bg-white shadow">
             <div class="container flex justify-between items-center mx-auto px-10">
-                <h1 class="text-3xl font-black">
+                <a href="{{route('home')}}" class="text-3xl font-black">
                     DevStagram
-                </h1>
+                </a>
 
                 @auth
                     <nav class="flex gap-2 items-center">
