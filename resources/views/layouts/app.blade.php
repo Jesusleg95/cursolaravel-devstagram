@@ -3,10 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>DevStagram - @yield('titulo')</title>
         @stack('styles')
         @vite('resources/css/app.css')
         @vite('resources/js/app.js')
+        @livewireStyles
     </head>
     <body class="bg-gray-100">
         <header class="p-5 bg-white shadow">
@@ -69,5 +71,6 @@
         <footer class="mt-10 text-center p-5 text-gray-500 font-bold uppercase">
             DevStagram - Todos los derechos reservados {{ now()-> year }}
         </footer>
+        @livewireScripts
     </body>
 </html>
